@@ -1,26 +1,30 @@
-import React from 'react';
-import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
-import TextField from '@material-ui/core/TextField';
+import React, { FC, useState } from "react";
+import TextField from "@material-ui/core/TextField";
+import { InputTypes } from "./types";
 
-const useStyles = makeStyles((theme: Theme) =>
-    createStyles({
-        root: {
-            '& > *': {
-                margin: theme.spacing(1),
-                width: '25ch',
-            },
-        },
-    }),
-);
+const Input: FC<InputTypes> = ({
+  label,
+  onChange,
+  value,
+  name,
+  type = "text",
+}) => {
+  const [inputValue, setValue] = useState(value as string | number);
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // @ts-ignore
+    setValue(e.target.value);
+    onChange(e);
+  };
+  return (
+    <TextField
+      value={inputValue}
+      type={type}
+      onChange={handleChange}
+      label={label}
+      name={name}
+      variant="outlined"
+    />
+  );
+};
 
-export default function BasicTextFields() {
-    const classes = useStyles();
-
-    return (
-        <form className={classes.root} noValidate autoComplete="off">
-    <TextField id="standard-basic" label="Standard" />
-    <TextField id="filled-basic" label="Filled" variant="filled" />
-    <TextField id="outlined-basic" label="Outlined" variant="outlined" />
-        </form>
-);
-}
+export default Input;

@@ -1,19 +1,13 @@
-import { Rates } from "./types";
+import { Product } from "./types";
 
-export const FETCH_RATES = 'FETCH_RATES';
-export const SET_RATES = 'SET_RATES';
-export const SET_LOADING = 'SET_LOADING';
+export const SET_PRODUCT = "SET_PRODUCT";
+export const REMOVE_PRODUCT = "REMOVE_PRODUCT";
 
-export const fetchRates = (value: Rates['value']) => ({
-    type: FETCH_RATES,
-    value,
+export const setProduct = (value: Product) => ({
+  type: SET_PRODUCT,
+  value,
 });
-
-export const setRates = (value: string) => ({
-    type: SET_RATES,
-    value,
-})
-export const setLoading = (value: boolean) => ({
-    type: SET_LOADING,
-    value,
-})
+export const removeProduct = (value: number) => ({
+  type: REMOVE_PRODUCT,
+  value,
+});

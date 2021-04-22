@@ -1,18 +1,17 @@
-export interface Rates {
-    value: string;
-}
+export type ProductAction = {
+  type: string;
+  value: any;
+};
 
-export type RateAction = {
-    type: string;
-    value: string;
-}
-
-export type RateState = {
-    rate: string;
-    currency: string;
-    isLoading: boolean;
-}
-export type OptionsTypes = {
-    label: string;
-    value: string;
-}
+export type ProductState = {
+  items: Array<Product>;
+};
+export type FormTypes = {
+  price: number;
+  name: string;
+};
+export type Product = {
+  name: string;
+  price: number;
+  date: number;
+};

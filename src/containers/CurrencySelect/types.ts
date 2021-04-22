@@ -1,13 +1,18 @@
 export interface Rates {
-    value: string;
+  value: string;
 }
 
 export type RateAction = {
-    type: string;
-    value: string;
-}
+  type: string;
+  value: any;
+};
 
 export type RateState = {
-    rate: string;
-    currency: string;
-}
+  rate: number;
+  currency: string;
+  isLoading: boolean;
+};
+export type OptionsTypes = {
+  label: string;
+  value: string;
+};

@@ -1,22 +1,25 @@
-import { SET_RATES, SET_LOADING } from './actions';
-import {RateAction, RateState} from "./types";
+import { SET_PRODUCT, REMOVE_PRODUCT } from "./actions";
+import { ProductState, ProductAction } from "./types";
 
 const initialState = {
-    rate: '',
-    currency: 'EUR',
-    isLoading: false,
+  items: [],
 };
 
-
-export default function rates(state: RateState = initialState, action: RateAction) {
-    switch (action.type) {
-        case SET_RATES: {
-            return {...state, rate: action.value};
-        }
-        case SET_LOADING: {
-            return {...state, isLoading: action.value};
-        }
-        default:
-            return state;
+export default function products(
+  state: ProductState = initialState,
+  action: ProductAction
+) {
+  switch (action.type) {
+    case SET_PRODUCT: {
+      return { ...state, items: [...state.items, action.value] };
     }
+    case REMOVE_PRODUCT: {
+      return {
+        ...state,
+        items: state.items.filter(({ date }) => date !== action.value),
+      };
+    }
+    default:
+      return state;
+  }
 }
